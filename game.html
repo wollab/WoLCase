@@ -5,6 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WoLCase — Game Detail</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .gd-hero {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 2.5rem;
+    }
+    .gd-eyebrow { display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem; }
+    .gd-title { font-size:clamp(2.6rem,7vw,5rem);line-height:1.0;font-weight:700;margin-bottom:0.4rem; }
+    .gd-title-sub { font-size:1.1rem;font-weight:500;color:var(--ink-soft);margin-bottom:1.25rem; }
+    .gd-headline {
+      font-size:1.1rem;color:var(--ink);line-height:1.8;max-width:54rem;
+      margin-bottom:2rem;padding:1.1rem 1.4rem;
+      background:rgba(255,255,255,0.8);
+      border-left:4px solid var(--mint-deep);
+      border-radius:0 var(--radius-md) var(--radius-md) 0;
+    }
+    .gd-meta { display:flex;flex-wrap:wrap;gap:0.65rem;align-items:center; }
+    .gd-chip {
+      display:inline-flex;align-items:center;gap:0.4rem;
+      padding:0.5rem 1rem;border-radius:999px;font-size:0.9rem;font-weight:600;
+      background:rgba(255,255,255,0.8);border:1px solid var(--line);
+    }
+    .gd-chip small { font-size:0.77rem;color:var(--ink-soft);font-weight:400;margin-left:0.15rem; }
+    .gd-chip-e { background:var(--navy);color:#fff;border-color:var(--navy);font-size:1rem; }
+
+    /* E-block */
+    .e-block {
+      padding:1.6rem;border-radius:var(--radius-xl);
+      background:linear-gradient(135deg,rgba(31,63,143,0.93),rgba(54,189,188,0.88));
+      color:#fff;margin-bottom:2.5rem;
+    }
+    .e-block-top { display:flex;align-items:center;gap:1.5rem;margin-bottom:0.9rem;flex-wrap:wrap; }
+    .e-big { font-size:4.5rem;font-weight:700;line-height:1; }
+    .e-label-wrap {}
+    .e-label-name { font-size:1.4rem;font-weight:700; }
+    .e-label-sub { font-size:0.85rem;opacity:0.75;margin-top:0.15rem; }
+    .e-desc { font-size:0.95rem;opacity:0.88;line-height:1.7;margin-bottom:1.2rem; }
+    .e-scale { display:grid;gap:0.4rem; }
+    .esr {
+      display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0.85rem;
+      border-radius:0.75rem;background:rgba(255,255,255,0.1);font-size:0.88rem;
+    }
+    .esr.cur { background:rgba(255,255,255,0.22);font-weight:700; }
+    .esr .eb {
+      min-width:2.4rem;text-align:center;padding:0.2rem 0.4rem;
+      border-radius:0.4rem;font-size:0.8rem;font-weight:700;background:rgba(255,255,255,0.18);
+    }
+    .esr .em { margin-left:auto;font-size:0.8rem;opacity:0.75; }
+
+    /* Stat chips */
+    .sc-row { display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:2.5rem; }
+    .sc {
+      padding:1rem 1.3rem;border-radius:var(--radius-lg);
+      background:rgba(255,255,255,0.82);border:1px solid rgba(255,255,255,0.75);
+      box-shadow:0 8px 24px rgba(21,45,98,0.09);min-width:140px;
+    }
+    .sc-v { font-size:1.5rem;font-weight:700;color:var(--navy);line-height:1.1;margin-bottom:0.25rem; }
+    .sc-v.sm { font-size:1rem; }
+    .sc-l { font-size:0.82rem;color:var(--ink-soft); }
+
+    /* KABIR */
+    .kb-wrap { margin-bottom:2.5rem; }
+    .kb-wrap h2 { font-size:1.55rem;margin-bottom:0.3rem; }
+    .kb-sub { font-size:0.88rem;color:var(--ink-soft);margin-bottom:1.1rem; }
+    .kb-grid { display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem; }
+    .kb-card {
+      padding:1.1rem;border-radius:var(--radius-lg);
+      background:rgba(255,255,255,0.82);border:1px solid rgba(255,255,255,0.75);
+      box-shadow:0 8px 24px rgba(21,45,98,0.08);
+    }
+    .kb-l { font-size:2rem;font-weight:700;color:var(--navy);line-height:1; }
+    .kb-n { font-size:0.73rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.09em;margin:0.15rem 0 0.6rem; }
+    .kb-dots { display:flex;gap:0.3rem;margin-bottom:0.5rem; }
+    .kd { width:0.9rem;height:0.9rem;border-radius:50%;background:var(--line);flex:0 0 auto; }
+    .kd.e4{background:var(--navy)}.kd.e3{background:var(--mint-deep)}.kd.e2{background:var(--sun)}.kd.e1{background:#b0bac8}
+    .kb-note { font-size:0.8rem;color:var(--ink-soft);line-height:1.55; }
+
+    /* Quant */
+    .qt-wrap { margin-bottom:2.5rem; }
+    .qt-wrap h2 { font-size:1.55rem;margin-bottom:0.5rem; }
+    .qt-ctx {
+      font-size:0.88rem;color:var(--ink-soft);
+      background:rgba(255,200,87,0.18);border-left:3px solid var(--sun);
+      padding:0.6rem 1rem;border-radius:0 var(--radius-md) var(--radius-md) 0;margin-bottom:1.1rem;
+    }
+    .qt-grid { display:grid;gap:0.9rem; }
+    .qt-card {
+      border-radius:var(--radius-lg);
+      background:rgba(255,255,255,0.82);border:1px solid rgba(255,255,255,0.75);
+      box-shadow:0 8px 24px rgba(21,45,98,0.08);overflow:hidden;
+    }
+    .qt-head {
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0.9rem 1.25rem;border-bottom:1px solid var(--line);
+    }
+    .qt-name { font-weight:700;font-size:0.98rem; }
+    .qt-m {
+      display:flex;align-items:center;gap:0.35rem;
+      background:var(--mint-deep);color:#fff;
+      padding:0.28rem 0.75rem;border-radius:999px;font-weight:700;font-size:0.98rem;
+    }
+    .qt-m small { font-size:0.76rem;opacity:0.85; }
+    .qt-items { padding:0 1.25rem; }
+    .qt-item {
+      display:flex;align-items:flex-start;gap:0.75rem;
+      padding:0.6rem 0;border-top:1px solid var(--line);font-size:0.9rem;
+    }
+    .qt-text { flex:1;color:var(--ink-soft);line-height:1.5; }
+    .qt-score { flex:0 0 auto;font-weight:700;color:var(--navy);font-size:1.05rem;text-align:right;min-width:3.8rem; }
+    .qt-pct { font-size:0.78rem;color:var(--mint-deep);font-weight:500; }
+
+    /* Quotes */
+    .qw { margin-bottom:2.5rem; }
+    .qw h2 { font-size:1.55rem;margin-bottom:1rem; }
+    .qcard {
+      padding:1.2rem 1.5rem;border-radius:var(--radius-lg);
+      background:rgba(255,255,255,0.8);border:1px solid var(--line);
+      border-left:4px solid var(--mint);margin-bottom:0.75rem;
+    }
+    .qcard-t { font-style:italic;font-size:0.98rem;line-height:1.75;color:var(--ink); }
+    .qcard-s { margin-top:0.45rem;font-size:0.82rem;color:var(--ink-soft); }
+
+    /* CTA */
+    .cta-box {
+      border-radius:var(--radius-xl);
+      background:linear-gradient(135deg,rgba(223,255,125,0.7),rgba(120,221,215,0.85) 48%,rgba(31,63,143,0.9));
+      padding:1.75rem;margin-bottom:2.5rem;
+    }
+    .cta-inner {
+      background:rgba(255,255,255,0.92);border-radius:calc(var(--radius-xl) - 6px);
+      padding:1.3rem 1.5rem;margin-bottom:1rem;
+    }
+    .cta-inner p { font-size:0.98rem;line-height:1.75;font-style:italic;margin-bottom:0.35rem; }
+    .cta-inner small { font-size:0.81rem;color:var(--ink-soft);font-style:normal; }
+    .cta-actions { display:flex;gap:0.75rem;flex-wrap:wrap; }
+
+    /* Sources */
+    .sw { margin-bottom:4rem; }
+    .sw h2 { font-size:1.55rem;margin-bottom:1rem; }
+    .scard {
+      display:flex;align-items:flex-start;gap:1rem;
+      padding:1rem 1.25rem;border-radius:var(--radius-md);
+      background:rgba(255,255,255,0.72);border:1px solid var(--line);margin-bottom:0.6rem;
+    }
+    .sbadge {
+      flex:0 0 auto;padding:0.3rem 0.65rem;border-radius:0.5rem;
+      font-size:0.76rem;font-weight:700;text-transform:uppercase;white-space:nowrap;
+    }
+    .bp{background:rgba(31,63,143,0.12);color:var(--navy)}
+    .bo{background:rgba(255,200,87,0.25);color:#8a5c00}
+    .ba{background:rgba(16,32,57,0.08);color:var(--ink-soft)}
+    .stext { font-size:0.9rem;line-height:1.65;color:var(--ink-soft); }
+    .stitle { font-weight:600;color:var(--ink);margin-bottom:0.12rem; }
+
+    .gaps-h3 { font-size:1.05rem;color:var(--ink-soft);margin:1.5rem 0 0.5rem; }
+    .gaprow {
+      display:flex;gap:0.6rem;align-items:flex-start;
+      padding:0.5rem 0;border-top:1px solid var(--line);
+      font-size:0.9rem;color:var(--ink-soft);line-height:1.6;
+    }
+    .gapdot { flex:0 0 auto;color:var(--coral);margin-top:0.1rem; }
+
+    @media(max-width:860px){ .kb-grid{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:540px){ .kb-grid{grid-template-columns:repeat(2,1fr)} }
+  </style>
 </head>
 <body>
 
@@ -16,18 +181,15 @@
     </div>
   </div>
   <nav class="site-nav">
-    <a href="index.html">Impact Gallery</a>
+    <a href="index.html">← Impact Gallery</a>
     <a href="https://wizardsoflearning.com" target="_blank" rel="noopener">wizardsoflearning.com</a>
   </nav>
   <a href="mailto:contact@wizardsoflearning.com" class="btn btn-primary" style="font-size:0.9rem;padding:0.55rem 1.1rem">ติดต่อ WoL</a>
 </header>
 
-<main id="main-content">
-  <section class="section" style="padding-top:2rem">
-    <a href="index.html" class="back-link">← กลับหน้า Impact Gallery</a>
-  </section>
-  <div id="page-body" style="min-height:60vh;display:flex;align-items:center;justify-content:center">
-    <p style="color:var(--ink-soft)">กำลังโหลด…</p>
+<main>
+  <div id="page-body" class="section">
+    <p style="padding:4rem 0;color:var(--ink-soft)">กำลังโหลด…</p>
   </div>
 </main>
 
@@ -39,229 +201,175 @@
 </footer>
 
 <script>
-const DOMAIN_COLORS = {
-  finance:        { label:'การเงิน',       cls:'tag-mint' },
-  civic:          { label:'Civic',          cls:'tag-navy' },
-  'human-rights': { label:'สิทธิมนุษยชน', cls:'tag-coral' },
-  environment:    { label:'สิ่งแวดล้อม',  cls:'tag-lime' },
-  law:            { label:'กฎหมาย',        cls:'tag-sun'  },
+const DL = {finance:'การเงิน',civic:'Civic','human-rights':'สิทธิมนุษยชน',environment:'สิ่งแวดล้อม',law:'กฎหมาย'};
+const DC = {finance:'tag-mint',civic:'tag-navy','human-rights':'tag-coral',environment:'tag-lime',law:'tag-sun'};
+const KL = {K:'Knowledge',A:'Attitude',B:'Behavior',I:'Impact',R:'Reach'};
+const EI = {
+  4:{label:'Published',  desc:'ตีพิมพ์ในวารสารวิชาการ (TCI/Scopus) หรือรายงานประเมินผลอย่างเป็นทางการจากองค์กรวิจัยอิสระ'},
+  3:{label:'Structured', desc:'ข้อมูลจากแบบสอบถาม/การทดสอบที่เป็นระบบ (N≥30) วิเคราะห์ด้วยสถิติ'},
+  2:{label:'Observed',   desc:'สังเกตและบันทึกโดย facilitator/partner — event report หรือบทความสื่อที่ยืนยันการใช้งาน'},
+  1:{label:'Anecdote',   desc:'Testimonial / stated learning objectives — ยังไม่มีการวัดที่เป็นระบบ'}
 };
 
-const E_INFO = {
-  4: { label:'Published', desc:'งานวิจัยที่ตีพิมพ์ในวารสารวิชาการ (TCI/Scopus) หรือรายงานประเมินผลจากองค์กรอิสระ', color:'var(--navy)' },
-  3: { label:'Structured', desc:'ข้อมูลจากแบบสอบถาม / การทดสอบ pre-post (N≥30) วิเคราะห์ด้วยสถิติ', color:'var(--mint-deep)' },
-  2: { label:'Observed', desc:'สังเกตและบันทึกโดย facilitator / partner — รายงาน event หรือบทความสื่อที่ยืนยันการใช้งาน', color:'var(--sun)' },
-  1: { label:'Anecdote', desc:'Testimonial / stated learning objectives — ยังไม่มีการวัดที่เป็นระบบ', color:'#aab' },
-};
-
-const KABIR_LABELS = {
-  K:'Knowledge',
-  A:'Attitude',
-  B:'Behavior',
-  I:'Impact',
-  R:'Reach',
-};
-
-function scoreDotsHTML(score, eClass){
-  return [1,2,3,4].map(i=>
-    `<div class="kabir-dot${i<=score?' filled '+eClass:''}"></div>`
-  ).join('');
-}
-
-function eClass(s){ return s>=4?'e4':s>=3?'e3':s>=2?'e2':'e1'; }
-
-function sourceTypeLabel(t){
-  if(t==='published') return ['source-published','ตีพิมพ์'];
-  if(t==='observed')  return ['source-observed','Observed'];
-  return ['source-anecdote','Anecdote'];
-}
+function ec(s){ return s>=4?'e4':s>=3?'e3':s>=2?'e2':'e1'; }
+function dots(s,c){ return [1,2,3,4].map(i=>`<div class="kd${i<=s?' '+c:''}"></div>`).join(''); }
 
 function buildPage(g){
-  const domTags = (g.domain||[]).map(d=>{
-    const dc = DOMAIN_COLORS[d]||{label:d,cls:'tag-navy'};
-    return `<span class="tag ${dc.cls}">${dc.label}</span>`;
-  }).join('');
+  document.title = `WoLCase — ${g.name}`;
+  const ei = EI[g.e_score]||EI[1];
 
-  const eInfo = E_INFO[g.e_score] || E_INFO[1];
-  const ec = eClass(g.e_score);
+  const domTags = (g.domain||[]).map(d=>`<span class="tag ${DC[d]||'tag-navy'}">${DL[d]||d}</span>`).join('');
 
-  // KABIR cards
-  const kabirCards = Object.entries(g.kabir||{}).map(([k,v])=>{
-    const kec = eClass(v.score);
-    return `
-    <div class="kabir-card">
-      <div class="kabir-letter">${k}</div>
-      <div class="kabir-name">${KABIR_LABELS[k]||k}</div>
-      <div class="kabir-score">${scoreDotsHTML(v.score, kec)}</div>
-      <div class="kabir-note">${v.note||''}</div>
-    </div>`;
-  }).join('');
-
-  // Stats
-  const statCards = [
-    g.players && { value:g.players, label:'จำนวนผู้เล่น' },
-    g.duration && { value:g.duration, label:'ระยะเวลา' },
-    g.r_label  && { value:g.r_label, label:'Reach' },
-    g.target   && g.target!=='ไม่ระบุ' && { value:g.target, label:'กลุ่มเป้าหมาย' },
-  ].filter(Boolean).slice(0,4);
-
-  const statsHTML = statCards.map(s=>`
-    <div class="stat-card">
-      <div class="stat-value" style="font-size:${s.value.length>12?'1.1rem':'2.2rem'}">${s.value}</div>
-      <div class="stat-label">${s.label}</div>
+  const escale = [4,3,2,1].map(l=>`
+    <div class="esr${g.e_score===l?' cur':''}">
+      <span class="eb">E${l}</span>
+      <span>${EI[l].label}</span>
+      ${g.e_score===l?'<span class="em">← ตอนนี้</span>':''}
     </div>`).join('');
 
-  // Quotes
-  const quotesHTML = (g.quotes||[]).map(q=>`
-    <div class="source-item" style="border-left:4px solid var(--mint-deep)">
-      <div class="source-text" style="font-style:italic;font-size:0.95rem">
-        "${q.text}"
-        <small style="display:block;margin-top:0.35rem;font-style:normal;font-size:0.82rem">— ${q.source}</small>
-      </div>
+  const statChips = [
+    g.players&&{v:g.players,l:'จำนวนผู้เล่น'},
+    g.duration&&{v:g.duration,l:'ระยะเวลา'},
+    g.r_label&&{v:g.r_label,l:'Reach'},
+    g.target&&g.target!=='ไม่ระบุ'&&{v:g.target,l:'กลุ่มเป้าหมาย'},
+  ].filter(Boolean).map(c=>`
+    <div class="sc">
+      <div class="sc-v${c.v.length>14?' sm':''}">${c.v}</div>
+      <div class="sc-l">${c.l}</div>
     </div>`).join('');
 
-  // Quantitative block (Local Election special)
+  const kabir = Object.entries(g.kabir||{}).map(([k,v])=>`
+    <div class="kb-card">
+      <div class="kb-l">${k}</div>
+      <div class="kb-n">${KL[k]||k}</div>
+      <div class="kb-dots">${dots(v.score,ec(v.score))}</div>
+      <div class="kb-note">${v.note||'—'}</div>
+    </div>`).join('');
+
   let quantHTML = '';
   if(g.quantitative){
     const q = g.quantitative;
     quantHTML = `
-    <section class="section stats-section" style="padding-top:0">
-      <h2 style="font-size:1.4rem;margin-bottom:1rem">ผลการวิจัยเชิงปริมาณ</h2>
-      <p style="color:var(--ink-soft);font-size:0.92rem;margin-bottom:1.2rem">N=${q.n} — ${q.context}</p>
-      <div style="display:flex;flex-direction:column;gap:1rem">
-        ${(q.constructs||[]).map(c=>`
-          <div style="padding:1.2rem;border-radius:var(--radius-lg);background:rgba(255,255,255,0.8);border:1px solid var(--line);box-shadow:var(--shadow)">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
-              <strong style="font-size:1rem">${c.name}</strong>
-              <span class="e-badge e3" style="font-size:1rem">M = ${c.mean}</span>
-            </div>
-            ${(c.items||[]).slice(0,3).map(item=>`
-              <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-top:1px solid var(--line);font-size:0.88rem;color:var(--ink-soft)">
-                <span>${item.text}</span>
-                <span style="font-weight:700;color:var(--navy)">${item.mean}${item.pct_high?` (${item.pct_high}%)`:''}</span>
-              </div>`).join('')}
-          </div>`).join('')}
-      </div>
-    </section>`;
+      <div class="qt-wrap">
+        <h2>ผลการวิจัยเชิงปริมาณ</h2>
+        <div class="qt-ctx">N = ${q.n} — ${q.context}</div>
+        <div class="qt-grid">
+          ${(q.constructs||[]).map(c=>`
+            <div class="qt-card">
+              <div class="qt-head">
+                <div class="qt-name">${c.name}</div>
+                <div class="qt-m">M = ${c.mean} <small>/ SD ${c.sd}</small></div>
+              </div>
+              <div class="qt-items">
+                ${(c.items||[]).map(it=>`
+                  <div class="qt-item">
+                    <div class="qt-text">${it.text}</div>
+                    <div class="qt-score">${it.mean}${it.pct_high?`<div class="qt-pct">${it.pct_high}%</div>`:''}</div>
+                  </div>`).join('')}
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>`;
   }
 
-  // Sources
-  const sourcesHTML = (g.sources||[]).map(s=>{
-    const [cls,lbl] = sourceTypeLabel(s.type);
-    return `
-    <div class="source-item">
-      <span class="source-badge ${cls}">E${s.e_score} ${lbl}</span>
-      <div class="source-text">
-        <strong>${s.title}</strong><br>${s.note||''}
-      </div>
-    </div>`;
-  }).join('');
+  const quotes = (g.quotes||[]).length?`
+    <div class="qw">
+      <h2>เสียงจากผู้ใช้</h2>
+      ${g.quotes.map(q=>`
+        <div class="qcard">
+          <div class="qcard-t">"${q.text}"</div>
+          <div class="qcard-s">— ${q.source}</div>
+        </div>`).join('')}
+    </div>`:'';
 
-  // Gaps
-  const gapsHTML = (g.gaps||[]).map(gap=>`
-    <div style="display:flex;gap:0.6rem;padding:0.6rem 0;border-top:1px solid var(--line);font-size:0.9rem;color:var(--ink-soft)">
-      <span style="flex:0 0 auto;color:var(--coral)">○</span>${gap}
+  const design = g.design_note?`
+    <div style="margin-bottom:2.5rem">
+      <h2 style="font-size:1.55rem;margin-bottom:0.75rem">Game Design</h2>
+      <div style="padding:1.2rem 1.4rem;border-radius:var(--radius-lg);background:rgba(255,255,255,0.8);border:1px solid var(--line);color:var(--ink-soft);font-size:0.95rem;line-height:1.8">${g.design_note}</div>
+    </div>`:'';
+
+  function sc(t){return t==='published'?'bp':t==='observed'?'bo':'ba';}
+  function sl(t,s){return `E${s} ${t==='published'?'ตีพิมพ์':t==='observed'?'Observed':'Anecdote'}`;}
+
+  const sources = (g.sources||[]).map(s=>`
+    <div class="scard">
+      <span class="sbadge ${sc(s.type)}">${sl(s.type,s.e_score)}</span>
+      <div class="stext"><div class="stitle">${s.title}</div>${s.note||''}</div>
     </div>`).join('');
 
-  // E-scale
-  const escaleHTML = [4,3,2,1].map(lvl=>`
-    <div class="e-scale-row${g.e_score===lvl?' current':''}">
-      <span class="e-scale-badge">E${lvl}</span>
-      <span>${E_INFO[lvl].label}</span>
-      ${g.e_score===lvl?'<span style="margin-left:auto">◀ ตอนนี้</span>':''}
-    </div>`).join('');
-
-  document.title = `WoLCase — ${g.name}`;
+  const gaps = (g.gaps||[]).length?`
+    <h3 class="gaps-h3">ช่องว่างที่ยังขาด</h3>
+    ${g.gaps.map(gap=>`
+      <div class="gaprow"><span class="gapdot">○</span><span>${gap}</span></div>`).join('')}`:'';
 
   return `
-  <section class="section">
-    <div class="game-hero">
-      <div class="game-hero-copy">
-        <span class="game-label">${domTags}</span>
-        <h1>${g.name}<br><span style="opacity:0.6;font-size:0.55em;line-height:2">${g.name_th!==g.name?g.name_th:''}</span></h1>
-        <p class="game-hero-lead">${g.headline_th}</p>
-        <div class="game-facts">
-          <div><strong>${g.year}</strong><span>ปีที่ผลิต</span></div>
-          <div><strong style="font-size:1.2rem">${g.e_label||'E'+g.e_score}</strong><span>Evidence</span></div>
-          <div><strong style="font-size:1.1rem">${g.r_label||'R'+g.r_score}</strong><span>Reach</span></div>
+    <div class="gd-hero">
+      <div class="gd-eyebrow">${domTags}<span class="tag tag-navy">${g.year}</span></div>
+      <h1 class="gd-title">${g.name}</h1>
+      ${g.name_th&&g.name_th!==g.name?`<p class="gd-title-sub">${g.name_th}</p>`:''}
+      <blockquote class="gd-headline">${g.headline_th}</blockquote>
+      <div class="gd-meta">
+        <span class="gd-chip gd-chip-e">${g.e_label||'E'+g.e_score}</span>
+        <span class="gd-chip">${g.r_label||'R'+g.r_score}</span>
+        <span class="gd-chip">${g.client}<small>ลูกค้า</small></span>
+        ${(g.sdg||[]).map(s=>`<span class="gd-chip">${s}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="e-block">
+      <div class="e-block-top">
+        <div class="e-big">E${g.e_score}</div>
+        <div class="e-label-wrap">
+          <div class="e-label-name">${ei.label}</div>
+          <div class="e-label-sub">Evidence Score — WoL KABIR Framework</div>
         </div>
       </div>
-      <div class="e-showcase">
-        <div class="e-showcase-label">Evidence Score</div>
-        <div class="e-score-big">E${g.e_score}</div>
-        <div class="e-score-name">${eInfo.label}</div>
-        <div class="e-desc">${eInfo.desc}</div>
-        <div class="e-scale">${escaleHTML}</div>
+      <div class="e-desc">${ei.desc}</div>
+      <div class="e-scale">${escale}</div>
+    </div>
+
+    ${statChips?`<div class="sc-row">${statChips}</div>`:''}
+
+    <div class="kb-wrap">
+      <h2>KABIR Impact Profile</h2>
+      <p class="kb-sub">Knowledge · Attitude · Behavior · Impact · Reach — 5 มิติที่วัด (จุดสีแสดงระดับ evidence ที่มี)</p>
+      <div class="kb-grid">${kabir}</div>
+    </div>
+
+    ${quantHTML}
+    ${quotes}
+    ${design}
+
+    ${g.client?`
+    <div class="cta-box">
+      <div class="cta-inner">
+        <p>${g.headline_th}</p>
+        <small>ลูกค้า: ${g.client}${g.source?' | '+g.source:''}</small>
       </div>
-    </div>
-  </section>
+      <div class="cta-actions">
+        <a href="mailto:contact@wizardsoflearning.com?subject=สนใจ ${g.name}" class="btn btn-primary">ใช้ใน Proposal</a>
+        <a href="index.html" class="btn btn-secondary">← ดูเกมอื่น</a>
+      </div>
+    </div>`:''}
 
-  ${statsHTML ? `<section class="section stats-section"><div class="stats-grid">${statsHTML}</div></section>` : ''}
-
-  <section class="section kabir-section">
-    <h2>KABIR Impact Profile</h2>
-    <p style="color:var(--ink-soft);margin-bottom:1.2rem;font-size:0.95rem">
-      Knowledge · Attitude · Behavior · Impact · Reach — 5 มิติที่ WoL ติดตาม
-    </p>
-    <div class="kabir-grid">${kabirCards}</div>
-  </section>
-
-  ${quantHTML}
-
-  ${quotesHTML ? `
-  <section class="section" style="padding:1.5rem 0">
-    <h2 style="font-size:1.4rem;margin-bottom:1rem">เสียงจากผู้ใช้</h2>
-    <div style="display:flex;flex-direction:column;gap:0.75rem">${quotesHTML}</div>
-  </section>` : ''}
-
-  ${g.design_note ? `
-  <section class="section" style="padding:1.5rem 0">
-    <h2 style="font-size:1.4rem;margin-bottom:0.75rem">Game Design</h2>
-    <div style="padding:1.2rem;border-radius:var(--radius-lg);background:rgba(255,255,255,0.8);border:1px solid var(--line);color:var(--ink-soft);font-size:0.95rem;line-height:1.75">${g.design_note}</div>
-  </section>` : ''}
-
-  ${g.client ? `
-  <div class="section proposal-box">
-    <div class="proposal-box-copy">
-      <p>"${g.headline_th}"</p>
-      <small>ลูกค้า: ${g.client} | ${g.source||''}</small>
-    </div>
-    <div class="proposal-box-actions">
-      <a href="mailto:contact@wizardsoflearning.com?subject=สนใจ ${g.name}" class="btn btn-primary">ใช้ใน Proposal</a>
-      <a href="index.html" class="btn btn-secondary">← ดูเกมอื่น</a>
-    </div>
-  </div>` : ''}
-
-  <section class="section sources-section">
-    <h2>แหล่งข้อมูล</h2>
-    ${sourcesHTML}
-    ${gapsHTML ? `
-    <div style="margin-top:1.5rem">
-      <h3 style="font-size:1.1rem;margin-bottom:0.5rem;color:var(--ink-soft)">ช่องว่างที่ยังขาด</h3>
-      ${gapsHTML}
-    </div>` : ''}
-  </section>
-  `;
+    <div class="sw">
+      <h2>แหล่งข้อมูล</h2>
+      ${sources}
+      ${gaps}
+    </div>`;
 }
 
 async function init(){
-  const params = new URLSearchParams(window.location.search);
-  const slug = params.get('slug');
-  if(!slug){
-    window.location.href = 'index.html';
-    return;
-  }
+  const slug = new URLSearchParams(window.location.search).get('slug');
+  if(!slug){ window.location.href='index.html'; return; }
   try {
-    const res = await fetch(`data/${slug}.json`);
-    if(!res.ok) throw new Error('not found');
-    const g = await res.json();
+    const g = await fetch(`data/${slug}.json`).then(r=>{ if(!r.ok) throw new Error(); return r.json(); });
     document.getElementById('page-body').innerHTML = buildPage(g);
-  } catch(e){
+  } catch {
     document.getElementById('page-body').innerHTML =
-      '<div class="section" style="padding:4rem 0;color:var(--ink-soft)"><p>ไม่พบข้อมูลเกมนี้ — <a href="index.html">กลับหน้าหลัก</a></p></div>';
+      '<p style="padding:4rem 0;color:var(--ink-soft)">ไม่พบข้อมูลเกมนี้ — <a href="index.html">กลับหน้าหลัก</a></p>';
   }
 }
-
 init();
 </script>
 </body>

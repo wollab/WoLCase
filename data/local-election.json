@@ -6,8 +6,8 @@
   "client": "ELECT (FNF Thailand) + สถาบันพระปกเกล้า (KPI)",
   "domain": ["civic"],
   "tags": ["civic-education", "democracy", "local-government", "youth"],
-  "e_score": 3,
-  "e_label": "E3 — แบบสอบถาม N=45",
+  "e_score": 4,
+  "e_label": "E4 — ตีพิมพ์ (KPI, 2025)",
   "r_score": 2,
   "r_label": "R2 — 1,000 ชุด",
   "players": "3–6 คน",
@@ -76,8 +76,8 @@
     {
       "title": "Thananithichot et al. (2025) — เกมเพื่อการมีส่วนร่วม (KPI Book)",
       "type": "published",
-      "e_score": 3,
-      "note": "ISBN 978-616-476-429-3, N=45, post-game survey, 3 constructs"
+      "e_score": 4,
+      "note": "ISBN 978-616-476-429-3, N=45, post-game survey, 3 constructs — ตีพิมพ์โดยสถาบันพระปกเกล้า (KPI) องค์กรวิจัยอิสระของรัฐ"
     },
     {
       "title": "ThaiPBS Article — Local Election เกมเลือกตั้ง",
