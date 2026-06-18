@@ -1,0 +1,43 @@
+{
+  "slug": "blue-carbon",
+  "name": "Blue Carbon",
+  "name_th": "Blue Carbon Board Game",
+  "year": 2023,
+  "client": "Friedrich Naumann Foundation (FNF) Thailand + อาศรมศิลป์",
+  "domain": ["environment"],
+  "tags": ["climate", "coastal-ecosystem", "mangrove", "CSR"],
+  "e_score": 2,
+  "e_label": "E2 — FNF article + field demo",
+  "r_score": 1,
+  "r_label": "R1 — ระยอง field demo",
+  "players": "3–5 คน",
+  "duration": "60 นาที",
+  "target": "ประชาชนทั่วไป, เจ้าหน้าที่รัฐในพื้นที่ชายฝั่ง",
+  "sdg": ["SDG 13", "SDG 14", "SDG 15"],
+  "headline_th": "Blue Carbon เปิดความเข้าใจเรื่องระบบนิเวศชายฝั่งและบทบาทของป่าชายเลนต่อ climate change — ผ่านการทดสอบกับชุมชนชายฝั่ง จ.ระยอง",
+  "headline_en": "Blue Carbon builds understanding of coastal ecosystems and blue carbon sequestration — field-tested with coastal communities in Rayong.",
+  "key_stat": "3–5×",
+  "key_stat_label": "ป่าชายเลนดูดซับ CO₂ มากกว่าป่าทั่วไป",
+  "reach_note": "Field demo จ.ระยอง + FNF Thailand official article",
+  "source": "FNF Thailand official article (freiheit.org/thailand) + case JSON",
+  "kabir": {
+    "K": { "score": 2, "note": "FNF ยืนยัน: ผู้เล่นเข้าใจ blue carbon และระบบนิเวศชายฝั่งผ่านประสบการณ์ตรง" },
+    "A": { "score": 1, "note": "ยังไม่มีแบบสอบถาม" },
+    "B": { "score": 1, "note": "ไม่มี follow-up" },
+    "I": { "score": 2, "note": "FNF Thailand เผยแพร่อย่างเป็นทางการ — credible international NGO endorsement" },
+    "R": { "score": 1, "note": "Demo ที่ระยอง — ไม่ทราบจำนวนรวม" }
+  },
+  "sources": [
+    {
+      "title": "FNF Thailand Official Article — freiheit.org/thailand",
+      "type": "observed",
+      "e_score": 2,
+      "note": "ยืนยันการพัฒนาและ field demo"
+    }
+  ],
+  "gaps": [
+    "จำนวนผู้เล่นจาก field demo ระยอง",
+    "Follow-up กับชุมชน",
+    "แบบสอบถามหลังเล่น (เพื่อ upgrade เป็น E3)"
+  ]
+}

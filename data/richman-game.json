@@ -1,0 +1,44 @@
+{
+  "slug": "richman-game",
+  "name": "Richman Game",
+  "name_th": "เส้นทางเศรษฐี",
+  "year": 2020,
+  "client": "กรมสรรพากร กระทรวงการคลัง",
+  "domain": ["finance"],
+  "tags": ["financial-literacy", "tax", "government", "first-jobbers"],
+  "e_score": 1,
+  "e_label": "E1 — stated objectives",
+  "r_score": 1,
+  "r_label": "R1 — ไม่ทราบจำนวน",
+  "players": "2–5 คน",
+  "duration": "40 นาที",
+  "target": "คนวัยเริ่มทำงาน (first jobbers), เยาวชน",
+  "sdg": ["SDG 10", "SDG 16"],
+  "headline_th": "Richman Game จำลองชีวิต 4 ปีแรกของการทำงาน ช่วยให้ผู้เล่นเข้าใจวงจรภาษีบุคคลธรรมดาจริงของไทย",
+  "headline_en": "Richman Game simulates the first 4 years of working life, teaching personal income tax and financial planning through gameplay.",
+  "key_stat": "บอร์ดเกมไทยเกมแรก",
+  "key_stat_label": "ที่ใช้กระดาษ linen",
+  "reach_note": "Workshop และ booth กรมสรรพากร — ไม่ทราบจำนวนรวม",
+  "source": "WoL portfolio + กรมสรรพากร กระทรวงการคลัง (ลูกค้า)",
+  "kabir": {
+    "K": { "score": 1, "note": "Stated learning objectives: วงจรภาษี, 3 เส้นทางอาชีพ, การหักลดหย่อน" },
+    "A": { "score": 1, "note": "เป้าหมาย: ทำให้ภาษีไม่น่ากลัว — ยังไม่มีการวัดจริง" },
+    "B": { "score": 1, "note": "ไม่มี follow-up" },
+    "I": { "score": 1, "note": "กรมสรรพากรเป็น government client — institutional name value" },
+    "R": { "score": 1, "note": "ไม่ทราบจำนวนรวม" }
+  },
+  "design_note": "3 เส้นทางอาชีพ (พนักงาน / freelance / ค้าขาย) ที่มีโครงสร้างภาษีต่างกัน วงจรภาษีตรงกับปฏิทินจริงของไทย ที่ปรึกษา: ศ.ดร.ยุทธนา ศรีสวัสดิ์",
+  "sources": [
+    {
+      "title": "WoL Portfolio — rich-man-game",
+      "type": "anecdote",
+      "e_score": 1,
+      "note": "อ่านครบ 2026-06-18 (อัปเดตเพิ่ม: duration, linen paper, career path)"
+    }
+  ],
+  "gaps": [
+    "จำนวนผู้เล่น / กิจกรรม — กรมสรรพากรน่าจะมีข้อมูล",
+    "After-action report เพื่อ upgrade เป็น E2",
+    "Press / social media กรมสรรพากร"
+  ]
+}

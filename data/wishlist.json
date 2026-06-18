@@ -1,0 +1,58 @@
+{
+  "slug": "wishlist",
+  "name": "Wishlist",
+  "name_th": "จัดสรรเงิน เติมความฝัน",
+  "year": 2024,
+  "client": "SEA Thailand",
+  "domain": ["finance"],
+  "tags": ["financial-literacy", "decision-making", "goal-setting"],
+  "e_score": 4,
+  "e_label": "E4 — ตีพิมพ์",
+  "r_score": 3,
+  "r_label": "R3 — 180,000+ คน",
+  "players": "2–6 คน",
+  "duration": "45 นาที",
+  "target": "นักเรียนมัธยมต้นขึ้นไป",
+  "sdg": ["SDG 4", "SDG 10"],
+  "headline_th": "Wishlist พัฒนาทักษะการเงินอย่างมีนัยสำคัญทางสถิติ (p < .05) ทั้งด้านความรู้และทัศนคติ",
+  "headline_en": "Wishlist significantly improved financial literacy — knowledge and attitude — among primary school students (p < .05).",
+  "key_stat": "p < .05 จากงานวิจัย TCI-Thaijo 2025",
+  "key_stat_label": "ยืนยันทางสถิติ",
+  "reach_note": "500+ สถานที่ทั่วประเทศ, 180,000+ คนผ่าน digital + physical",
+  "source": "งานวิจัย JLSEd (TCI-Thaijo, 2025) — กลุ่มตัวอย่าง N=72 ชั้น ป.4–ป.6",
+  "kabir": {
+    "K": { "score": 4, "note": "Pre-post score เพิ่มอย่างมีนัยสำคัญทางสถิติ (p < .05)" },
+    "A": { "score": 4, "note": "Attitude เปลี่ยนทางบวกอย่างมีนัยสำคัญทางสถิติ (p < .05)" },
+    "B": { "score": 2, "note": "Follow-up survey 30 วัน — ยืนยันว่า follow-up มีอยู่" },
+    "I": { "score": 2, "note": "ใช้ใน 500+ สถาบัน ทั่วประเทศ กับ SEA Thailand" },
+    "R": { "score": 3, "note": "ผู้เล่นโดยตรง 10,000+ / ผ่านระบบ 180,000+" }
+  },
+  "quotes": [
+    {
+      "text": "มันทำให้เราได้ลองใช้จ่ายเงินก่อน โดยที่ไม่ต้องไปใช้จ่ายจริงๆ — ถ้าเกิดการผิดพลาด มันก็ผิดพลาดแค่ในเกม",
+      "source": "ผู้เล่น (YouTube transcript WoL)"
+    },
+    {
+      "text": "บ้านเราไม่มีวิชาห้องเรียนการเงินเลย... พอเอาเกมเข้ามา น้องๆได้เรียนรู้แต่ก็ได้ความสนุกไปด้วย",
+      "source": "ครู (YouTube transcript WoL)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "งานวิจัย JLSEd (TCI-Thaijo, 2025)",
+      "type": "published",
+      "e_score": 4,
+      "note": "N=72, ป.4–ป.6, pre-post, p < .05"
+    },
+    {
+      "title": "SEA Thailand Press Release 2025",
+      "type": "observed",
+      "e_score": 2,
+      "note": "500+ สถานที่, 180,000+ reach"
+    }
+  ],
+  "gaps": [
+    "B-score ต้องการ follow-up survey ครบชุด (N≥30)",
+    "งานวิจัยระดับ ม.ต้น–ม.ปลาย ยังไม่มี"
+  ]
+}

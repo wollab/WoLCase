@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WoLCase — Game Detail</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div>
+      <span class="brand-kicker">Wizards of Learning</span>
+      <strong>WoLCase</strong>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Impact Gallery</a>
+    <a href="https://wizardsoflearning.com" target="_blank" rel="noopener">wizardsoflearning.com</a>
+  </nav>
+  <a href="mailto:contact@wizardsoflearning.com" class="btn btn-primary" style="font-size:0.9rem;padding:0.55rem 1.1rem">ติดต่อ WoL</a>
+</header>
+
+<main id="main-content">
+  <section class="section" style="padding-top:2rem">
+    <a href="index.html" class="back-link">← กลับหน้า Impact Gallery</a>
+  </section>
+  <div id="page-body" style="min-height:60vh;display:flex;align-items:center;justify-content:center">
+    <p style="color:var(--ink-soft)">กำลังโหลด…</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Wizards of Learning — <a href="https://wizardsoflearning.com" target="_blank">wizardsoflearning.com</a></span>
+    <span style="font-size:0.82rem;color:var(--ink-soft)">ข้อมูลอัปเดต มิถุนายน 2569</span>
+  </div>
+</footer>
+
+<script>
+const DOMAIN_COLORS = {
+  finance:        { label:'การเงิน',       cls:'tag-mint' },
+  civic:          { label:'Civic',          cls:'tag-navy' },
+  'human-rights': { label:'สิทธิมนุษยชน', cls:'tag-coral' },
+  environment:    { label:'สิ่งแวดล้อม',  cls:'tag-lime' },
+  law:            { label:'กฎหมาย',        cls:'tag-sun'  },
+};
+
+const E_INFO = {
+  4: { label:'Published', desc:'งานวิจัยที่ตีพิมพ์ในวารสารวิชาการ (TCI/Scopus) หรือรายงานประเมินผลจากองค์กรอิสระ', color:'var(--navy)' },
+  3: { label:'Structured', desc:'ข้อมูลจากแบบสอบถาม / การทดสอบ pre-post (N≥30) วิเคราะห์ด้วยสถิติ', color:'var(--mint-deep)' },
+  2: { label:'Observed', desc:'สังเกตและบันทึกโดย facilitator / partner — รายงาน event หรือบทความสื่อที่ยืนยันการใช้งาน', color:'var(--sun)' },
+  1: { label:'Anecdote', desc:'Testimonial / stated learning objectives — ยังไม่มีการวัดที่เป็นระบบ', color:'#aab' },
+};
+
+const KABIR_LABELS = {
+  K:'Knowledge',
+  A:'Attitude',
+  B:'Behavior',
+  I:'Impact',
+  R:'Reach',
+};
+
+function scoreDotsHTML(score, eClass){
+  return [1,2,3,4].map(i=>
+    `<div class="kabir-dot${i<=score?' filled '+eClass:''}"></div>`
+  ).join('');
+}
+
+function eClass(s){ return s>=4?'e4':s>=3?'e3':s>=2?'e2':'e1'; }
+
+function sourceTypeLabel(t){
+  if(t==='published') return ['source-published','ตีพิมพ์'];
+  if(t==='observed')  return ['source-observed','Observed'];
+  return ['source-anecdote','Anecdote'];
+}
+
+function buildPage(g){
+  const domTags = (g.domain||[]).map(d=>{
+    const dc = DOMAIN_COLORS[d]||{label:d,cls:'tag-navy'};
+    return `<span class="tag ${dc.cls}">${dc.label}</span>`;
+  }).join('');
+
+  const eInfo = E_INFO[g.e_score] || E_INFO[1];
+  const ec = eClass(g.e_score);
+
+  // KABIR cards
+  const kabirCards = Object.entries(g.kabir||{}).map(([k,v])=>{
+    const kec = eClass(v.score);
+    return `
+    <div class="kabir-card">
+      <div class="kabir-letter">${k}</div>
+      <div class="kabir-name">${KABIR_LABELS[k]||k}</div>
+      <div class="kabir-score">${scoreDotsHTML(v.score, kec)}</div>
+      <div class="kabir-note">${v.note||''}</div>
+    </div>`;
+  }).join('');
+
+  // Stats
+  const statCards = [
+    g.players && { value:g.players, label:'จำนวนผู้เล่น' },
+    g.duration && { value:g.duration, label:'ระยะเวลา' },
+    g.r_label  && { value:g.r_label, label:'Reach' },
+    g.target   && g.target!=='ไม่ระบุ' && { value:g.target, label:'กลุ่มเป้าหมาย' },
+  ].filter(Boolean).slice(0,4);
+
+  const statsHTML = statCards.map(s=>`
+    <div class="stat-card">
+      <div class="stat-value" style="font-size:${s.value.length>12?'1.1rem':'2.2rem'}">${s.value}</div>
+      <div class="stat-label">${s.label}</div>
+    </div>`).join('');
+
+  // Quotes
+  const quotesHTML = (g.quotes||[]).map(q=>`
+    <div class="source-item" style="border-left:4px solid var(--mint-deep)">
+      <div class="source-text" style="font-style:italic;font-size:0.95rem">
+        "${q.text}"
+        <small style="display:block;margin-top:0.35rem;font-style:normal;font-size:0.82rem">— ${q.source}</small>
+      </div>
+    </div>`).join('');
+
+  // Quantitative block (Local Election special)
+  let quantHTML = '';
+  if(g.quantitative){
+    const q = g.quantitative;
+    quantHTML = `
+    <section class="section stats-section" style="padding-top:0">
+      <h2 style="font-size:1.4rem;margin-bottom:1rem">ผลการวิจัยเชิงปริมาณ</h2>
+      <p style="color:var(--ink-soft);font-size:0.92rem;margin-bottom:1.2rem">N=${q.n} — ${q.context}</p>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        ${(q.constructs||[]).map(c=>`
+          <div style="padding:1.2rem;border-radius:var(--radius-lg);background:rgba(255,255,255,0.8);border:1px solid var(--line);box-shadow:var(--shadow)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+              <strong style="font-size:1rem">${c.name}</strong>
+              <span class="e-badge e3" style="font-size:1rem">M = ${c.mean}</span>
+            </div>
+            ${(c.items||[]).slice(0,3).map(item=>`
+              <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-top:1px solid var(--line);font-size:0.88rem;color:var(--ink-soft)">
+                <span>${item.text}</span>
+                <span style="font-weight:700;color:var(--navy)">${item.mean}${item.pct_high?` (${item.pct_high}%)`:''}</span>
+              </div>`).join('')}
+          </div>`).join('')}
+      </div>
+    </section>`;
+  }
+
+  // Sources
+  const sourcesHTML = (g.sources||[]).map(s=>{
+    const [cls,lbl] = sourceTypeLabel(s.type);
+    return `
+    <div class="source-item">
+      <span class="source-badge ${cls}">E${s.e_score} ${lbl}</span>
+      <div class="source-text">
+        <strong>${s.title}</strong><br>${s.note||''}
+      </div>
+    </div>`;
+  }).join('');
+
+  // Gaps
+  const gapsHTML = (g.gaps||[]).map(gap=>`
+    <div style="display:flex;gap:0.6rem;padding:0.6rem 0;border-top:1px solid var(--line);font-size:0.9rem;color:var(--ink-soft)">
+      <span style="flex:0 0 auto;color:var(--coral)">○</span>${gap}
+    </div>`).join('');
+
+  // E-scale
+  const escaleHTML = [4,3,2,1].map(lvl=>`
+    <div class="e-scale-row${g.e_score===lvl?' current':''}">
+      <span class="e-scale-badge">E${lvl}</span>
+      <span>${E_INFO[lvl].label}</span>
+      ${g.e_score===lvl?'<span style="margin-left:auto">◀ ตอนนี้</span>':''}
+    </div>`).join('');
+
+  document.title = `WoLCase — ${g.name}`;
+
+  return `
+  <section class="section">
+    <div class="game-hero">
+      <div class="game-hero-copy">
+        <span class="game-label">${domTags}</span>
+        <h1>${g.name}<br><span style="opacity:0.6;font-size:0.55em;line-height:2">${g.name_th!==g.name?g.name_th:''}</span></h1>
+        <p class="game-hero-lead">${g.headline_th}</p>
+        <div class="game-facts">
+          <div><strong>${g.year}</strong><span>ปีที่ผลิต</span></div>
+          <div><strong style="font-size:1.2rem">${g.e_label||'E'+g.e_score}</strong><span>Evidence</span></div>
+          <div><strong style="font-size:1.1rem">${g.r_label||'R'+g.r_score}</strong><span>Reach</span></div>
+        </div>
+      </div>
+      <div class="e-showcase">
+        <div class="e-showcase-label">Evidence Score</div>
+        <div class="e-score-big">E${g.e_score}</div>
+        <div class="e-score-name">${eInfo.label}</div>
+        <div class="e-desc">${eInfo.desc}</div>
+        <div class="e-scale">${escaleHTML}</div>
+      </div>
+    </div>
+  </section>
+
+  ${statsHTML ? `<section class="section stats-section"><div class="stats-grid">${statsHTML}</div></section>` : ''}
+
+  <section class="section kabir-section">
+    <h2>KABIR Impact Profile</h2>
+    <p style="color:var(--ink-soft);margin-bottom:1.2rem;font-size:0.95rem">
+      Knowledge · Attitude · Behavior · Impact · Reach — 5 มิติที่ WoL ติดตาม
+    </p>
+    <div class="kabir-grid">${kabirCards}</div>
+  </section>
+
+  ${quantHTML}
+
+  ${quotesHTML ? `
+  <section class="section" style="padding:1.5rem 0">
+    <h2 style="font-size:1.4rem;margin-bottom:1rem">เสียงจากผู้ใช้</h2>
+    <div style="display:flex;flex-direction:column;gap:0.75rem">${quotesHTML}</div>
+  </section>` : ''}
+
+  ${g.design_note ? `
+  <section class="section" style="padding:1.5rem 0">
+    <h2 style="font-size:1.4rem;margin-bottom:0.75rem">Game Design</h2>
+    <div style="padding:1.2rem;border-radius:var(--radius-lg);background:rgba(255,255,255,0.8);border:1px solid var(--line);color:var(--ink-soft);font-size:0.95rem;line-height:1.75">${g.design_note}</div>
+  </section>` : ''}
+
+  ${g.client ? `
+  <div class="section proposal-box">
+    <div class="proposal-box-copy">
+      <p>"${g.headline_th}"</p>
+      <small>ลูกค้า: ${g.client} | ${g.source||''}</small>
+    </div>
+    <div class="proposal-box-actions">
+      <a href="mailto:contact@wizardsoflearning.com?subject=สนใจ ${g.name}" class="btn btn-primary">ใช้ใน Proposal</a>
+      <a href="index.html" class="btn btn-secondary">← ดูเกมอื่น</a>
+    </div>
+  </div>` : ''}
+
+  <section class="section sources-section">
+    <h2>แหล่งข้อมูล</h2>
+    ${sourcesHTML}
+    ${gapsHTML ? `
+    <div style="margin-top:1.5rem">
+      <h3 style="font-size:1.1rem;margin-bottom:0.5rem;color:var(--ink-soft)">ช่องว่างที่ยังขาด</h3>
+      ${gapsHTML}
+    </div>` : ''}
+  </section>
+  `;
+}
+
+async function init(){
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+  if(!slug){
+    window.location.href = 'index.html';
+    return;
+  }
+  try {
+    const res = await fetch(`data/${slug}.json`);
+    if(!res.ok) throw new Error('not found');
+    const g = await res.json();
+    document.getElementById('page-body').innerHTML = buildPage(g);
+  } catch(e){
+    document.getElementById('page-body').innerHTML =
+      '<div class="section" style="padding:4rem 0;color:var(--ink-soft)"><p>ไม่พบข้อมูลเกมนี้ — <a href="index.html">กลับหน้าหลัก</a></p></div>';
+  }
+}
+
+init();
+</script>
+</body>
+</html>

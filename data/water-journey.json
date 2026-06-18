@@ -1,0 +1,45 @@
+{
+  "slug": "water-journey",
+  "name": "Water Journey",
+  "name_th": "การเดินทางของน้ำ",
+  "year": 2019,
+  "client": "SN Group (ส.นภา)",
+  "domain": ["environment"],
+  "tags": ["water", "STEM", "cooperative", "CSR", "junior-high"],
+  "e_score": 1,
+  "e_label": "E1 — WoL portfolio",
+  "r_score": 1,
+  "r_label": "R1 — โรงเรียน + Taiwan event",
+  "players": "3–5 คน",
+  "duration": "40 นาที",
+  "target": "นักเรียนมัธยมต้น (ม.1–ม.3)",
+  "sdg": ["SDG 6"],
+  "headline_th": "Water Journey ให้นักเรียนจำลองบทบาท 'ผู้จัดการน้ำ' เพื่อเข้าใจกระบวนการบำบัดและกรองน้ำในระบบอุตสาหกรรม ออกแบบร่วมกับ Chulalongkorn University",
+  "headline_en": "Water Journey puts students in the role of a water manager, teaching industrial water treatment and filtration through cooperative gameplay.",
+  "key_stat": "Chulalongkorn University",
+  "key_stat_label": "Research Partner (Environmental Engineering)",
+  "reach_note": "กระจายสู่โรงเรียน + ทดสอบที่งาน board game ไต้หวัน",
+  "source": "WoL portfolio (water-journey) อ่านครบ 2026-06-18",
+  "kabir": {
+    "K": { "score": 1, "note": "Stated: กระบวนการน้ำ, บทบาท SN Group, การบริหารน้ำ — positive reception Taiwan" },
+    "A": { "score": 1, "note": "เป้าหมาย: เห็นความสำคัญของน้ำ — ยังไม่มีการวัดจริง" },
+    "B": { "score": 1, "note": "ยังไม่มีข้อมูล" },
+    "I": { "score": 1, "note": "Chula + SN Group = institutional endorsement" },
+    "R": { "score": 1, "note": "กระจายสู่โรงเรียน — ไม่ทราบจำนวน" }
+  },
+  "design_note": "Cooperative gameplay (ไม่มีผู้แพ้ผู้ชนะ), ผู้เล่นรับบทเป็น 'otters', plastic injection-molded water drop pieces, hand-painted wood, custom die-cut pop-up board, วิดีโอสอนโดย TVmunk / Board Game Night",
+  "sources": [
+    {
+      "title": "WoL Portfolio — water-journey",
+      "type": "anecdote",
+      "e_score": 1,
+      "note": "อ่านครบ 2026-06-18"
+    }
+  ],
+  "gaps": [
+    "จำนวนโรงเรียนที่ได้รับเกม (SN Group น่าจะมี)",
+    "Report จาก SN Group (เพื่อ upgrade เป็น E2)",
+    "งานวิจัย Chulalongkorn University Environmental Engineering (ถ้ามี → E3 potential)",
+    "Feedback จาก Taiwan playtest"
+  ]
+}

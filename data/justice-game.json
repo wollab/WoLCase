@@ -1,0 +1,43 @@
+{
+  "slug": "justice-game",
+  "name": "Justice Game",
+  "name_th": "จับคนผิด",
+  "year": 2020,
+  "client": "สำนักงานกิจการยุติธรรม (OJA), กระทรวงยุติธรรม",
+  "domain": ["law"],
+  "tags": ["justice", "law", "youth", "government"],
+  "e_score": 2,
+  "e_label": "E2 — ใช้จริง / documented",
+  "r_score": 1,
+  "r_label": "R1 — ยืนยัน 23 คน",
+  "players": "4–8 คน",
+  "duration": "60 นาที",
+  "target": "เด็ก เยาวชน ประชาชนทั่วไป บุคลากรกระบวนการยุติธรรม",
+  "sdg": ["SDG 16"],
+  "headline_th": "Justice Game ช่วยให้ผู้เล่นเข้าใจกระบวนการยุติธรรมและบทบาทของแต่ละฝ่าย — ใช้จริงในกิจกรรมฝึกอบรมระดับชาติของ OJA",
+  "headline_en": "Justice Game teaches the justice process through roleplay — officially endorsed and deployed by the Office of Justice Affairs, Ministry of Justice.",
+  "key_stat": "23 คน / 5 องค์กร",
+  "key_stat_label": "กิจกรรม 2024 (เชียงใหม่)",
+  "reach_note": "ใช้เป็นเครื่องมือฝึกอบรมเครือข่ายกระบวนการยุติธรรมทั่วประเทศ",
+  "source": "OJA Official (justicechannel.org) + กิจกรรม เม.ย. 2567 คณะนิติศาสตร์ มช.",
+  "kabir": {
+    "K": { "score": 2, "note": "OJA ยืนยันว่าเกมสอนกระบวนการยุติธรรมได้จริง" },
+    "A": { "score": 1, "note": "ยังไม่มีแบบสอบถาม — เฉพาะ facilitator observation" },
+    "B": { "score": 1, "note": "ไม่มี follow-up" },
+    "I": { "score": 2, "note": "OJA ใช้เป็น training tool อย่างเป็นทางการ" },
+    "R": { "score": 1, "note": "23 คน ยืนยัน / ตัวเลขจริงน่าจะสูงกว่ามาก" }
+  },
+  "sources": [
+    {
+      "title": "OJA Official — justicechannel.org",
+      "type": "observed",
+      "e_score": 2,
+      "note": "ตีพิมพ์หน้าเกมอย่างเป็นทางการ + event documentation"
+    }
+  ],
+  "gaps": [
+    "จำนวนผู้เล่นรวมตั้งแต่ 2020 — OJA น่าจะมีข้อมูล",
+    "After-action report จาก OJA",
+    "แบบสอบถามหลังเล่น (เพื่อ upgrade เป็น E3)"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "make-it-right",
+  "name": "Make It Right",
+  "name_th": "Make It Right",
+  "year": 2024,
+  "client": "Amnesty International (Thailand)",
+  "domain": ["human-rights"],
+  "tags": ["human-rights", "youth", "advocacy"],
+  "e_score": 1,
+  "e_label": "E1 — internal only",
+  "r_score": 1,
+  "r_label": "R1 — ไม่ทราบจำนวน",
+  "players": "ไม่ระบุ",
+  "duration": "ไม่ระบุ",
+  "target": "ยังไม่ระบุ (internal only)",
+  "sdg": ["SDG 10", "SDG 16"],
+  "headline_th": "Make It Right เป็นบอร์ดเกมด้านสิทธิมนุษยชนที่ WoL ออกแบบให้กับ Amnesty International Thailand ในปี 2024",
+  "headline_en": "Make It Right is a human rights board game designed for Amnesty International Thailand (2024).",
+  "key_stat": "Amnesty International",
+  "key_stat_label": "ลูกค้า (International NGO)",
+  "reach_note": "ยังไม่มีข้อมูลสาธารณะ",
+  "source": "WoL internal (Drive folder)",
+  "kabir": {
+    "K": { "score": 1, "note": "Stated: สิทธิมนุษยชน — รายละเอียดเนื้อหายังไม่ public" },
+    "A": { "score": 1, "note": "ยังไม่มีข้อมูล" },
+    "B": { "score": 1, "note": "ยังไม่มีข้อมูล" },
+    "I": { "score": 1, "note": "Amnesty International = credible international NGO track record" },
+    "R": { "score": 1, "note": "ไม่ทราบจำนวน" }
+  },
+  "sources": [
+    {
+      "title": "WoL Internal (Drive folder)",
+      "type": "anecdote",
+      "e_score": 1,
+      "note": "ยังไม่มี public source — ขอ after-action report จาก Amnesty"
+    }
+  ],
+  "gaps": [
+    "After-action report จาก Amnesty Thailand (เพื่อ upgrade เป็น E2)",
+    "รายละเอียดเนื้อหาและ target group",
+    "จำนวนผู้เล่น / กิจกรรม"
+  ]
+}

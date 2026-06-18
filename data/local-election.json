@@ -1,0 +1,94 @@
+{
+  "slug": "local-election",
+  "name": "Local Election",
+  "name_th": "บอร์ดเกมเลือกตั้งท้องถิ่น",
+  "year": 2020,
+  "client": "ELECT (FNF Thailand) + สถาบันพระปกเกล้า (KPI)",
+  "domain": ["civic"],
+  "tags": ["civic-education", "democracy", "local-government", "youth"],
+  "e_score": 3,
+  "e_label": "E3 — แบบสอบถาม N=45",
+  "r_score": 2,
+  "r_label": "R2 — 1,000 ชุด",
+  "players": "3–6 คน",
+  "duration": "60 นาที",
+  "target": "เยาวชนและผู้มีสิทธิ์เลือกตั้งครั้งแรก",
+  "sdg": ["SDG 16"],
+  "headline_th": "Local Election สร้างความกระตือรือร้น ความรู้คิด และความรู้สึกมีประสิทธิภาพในฐานะพลเมือง — คะแนนเฉลี่ย 8.24–8.49/10",
+  "headline_en": "Local Election built political enthusiasm, civic cognition, and self-efficacy in young voters. Mean scores 8.24–8.49/10 (N=45).",
+  "key_stat": "8.36 / 10 คะแนนเฉลี่ยรวม",
+  "key_stat_label": "N=45 หลังเล่น",
+  "reach_note": "ผลิต 1,000 ชุด กระจายสู่สถาบันการศึกษาทั่วประเทศ",
+  "source": "Thananithichot et al. (2025) — KPI Library / ISBN: 978-616-476-429-3",
+  "kabir": {
+    "K": { "score": 3, "note": "Cognition construct M=8.24, SD=1.38 (N=45)" },
+    "A": { "score": 3, "note": "Enthusiasm construct M=8.36, SD=1.51; Efficacy construct M=8.49, SD=1.18" },
+    "B": { "score": 2, "note": "Follow-up ส.ค.–ก.ย. 2564 มีอยู่ แต่ยังไม่ได้ดึงข้อมูล" },
+    "I": { "score": 1, "note": "ยังไม่มีงานวิจัยระดับ behavior change ในสังคม" },
+    "R": { "score": 2, "note": "1,000 ชุด / กระจายทั่วประเทศ (ผ่าน KPI, FNF, WeVis)" }
+  },
+  "quantitative": {
+    "n": 45,
+    "context": "Democracy Game Festival — กลุ่มที่มี engagement สูงกว่า workshop ทั่วไป",
+    "constructs": [
+      {
+        "name": "Enthusiasm (ความกระตือรือร้น)",
+        "mean": 8.36,
+        "sd": 1.51,
+        "items": [
+          { "id": 2, "text": "สนุกและมีส่วนร่วม", "mean": 8.69, "pct_high": 97.8 },
+          { "id": 1, "text": "ชวนให้สนใจการเมือง", "mean": 8.64, "pct_high": 93.3 },
+          { "id": 4, "text": "อยากเล่นอีก", "mean": 8.42, "pct_high": 93.4 },
+          { "id": 5, "text": "อยากแนะนำให้คนอื่น", "mean": 8.11, "pct_high": 84.5 },
+          { "id": 3, "text": "ดีกว่าการเรียนแบบบรรยาย", "mean": 7.91, "pct_high": 79.9 }
+        ]
+      },
+      {
+        "name": "Cognition (ความรู้คิด)",
+        "mean": 8.24,
+        "sd": 1.38,
+        "items": [
+          { "id": 9, "text": "เข้าใจบทบาท อบต./เทศบาล", "mean": 8.67, "pct_high": null },
+          { "id": 7, "text": "เข้าใจว่าจะเลือกตั้งใคร", "mean": 8.58, "pct_high": null }
+        ]
+      },
+      {
+        "name": "Efficacy (ความรู้สึกมีประสิทธิภาพ)",
+        "mean": 8.49,
+        "sd": 1.18,
+        "items": [
+          { "id": 16, "text": "ไปใช้สิทธิ์เลือกตั้งแน่นอน", "mean": 9.22, "pct_high": 97.7 },
+          { "id": 15, "text": "เข้าใจว่าการเลือกตั้งสำคัญ", "mean": 9.00, "pct_high": 95.5 },
+          { "id": 13, "text": "อยากติดตามการเมืองท้องถิ่น", "mean": 8.73, "pct_high": 95.6 }
+        ]
+      }
+    ],
+    "overall_mean": 8.36,
+    "overall_sd": 1.21
+  },
+  "quotes": [
+    {
+      "text": "ถ้าเขาเห็นภาพนี้แล้วเขาเชื่อมโยงกับสถานการณ์จริงได้ — บอกว่าเดี๋ยวเข้าจังหวะเขาเลือกตั้งแล้วเขาคิดถึงภาพนี้ได้ มันจะดีมากเลย",
+      "source": "ผู้ออกแบบเกม WoL (YouTube)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Thananithichot et al. (2025) — เกมเพื่อการมีส่วนร่วม (KPI Book)",
+      "type": "published",
+      "e_score": 3,
+      "note": "ISBN 978-616-476-429-3, N=45, post-game survey, 3 constructs"
+    },
+    {
+      "title": "ThaiPBS Article — Local Election เกมเลือกตั้ง",
+      "type": "observed",
+      "e_score": 2,
+      "note": "Reach data, production data"
+    }
+  ],
+  "gaps": [
+    "Follow-up data (ส.ค.–ก.ย. 2564) ยังไม่ได้ดึงมา — อาจ upgrade เป็น E3+",
+    "N=45 มาจาก Democracy Festival — ไม่ใช่ random sample",
+    "Pre-test data (Exec Summary ระบุว่ามี) แต่ Chapter 6 รายงานแค่ post"
+  ]
+}

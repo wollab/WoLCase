@@ -1,0 +1,43 @@
+{
+  "slug": "its-all-right",
+  "name": "It's All Right",
+  "name_th": "Earthgard",
+  "year": 2025,
+  "client": "สำนักงานคณะกรรมการสิทธิมนุษยชนแห่งชาติ (กสม.)",
+  "domain": ["human-rights", "environment"],
+  "tags": ["human-rights", "environment", "systems-thinking", "NHRC"],
+  "e_score": 1,
+  "e_label": "E1 — internal only",
+  "r_score": 1,
+  "r_label": "R1 — Training กสม.",
+  "players": "ไม่ระบุ",
+  "duration": "ไม่ระบุ",
+  "target": "เด็ก เยาวชน และผู้ทำงานด้านสังคม สิ่งแวดล้อม และภาคประชาสังคม",
+  "sdg": ["SDG 13", "SDG 16"],
+  "headline_th": "It's All Right: Earthgard จำลองการบริหารทรัพยากรภายใต้ข้อจำกัดของระบบนิเวศ เพื่อให้เข้าใจความเชื่อมโยงระหว่างสิ่งแวดล้อมและสิทธิมนุษยชน",
+  "headline_en": "It's All Right: Earthgard simulates resource management under ecological constraints, illuminating the link between environment and human rights.",
+  "key_stat": "กสม.",
+  "key_stat_label": "ลูกค้าและ domain ตรงกับ NHRC ปัจจุบัน",
+  "reach_note": "ใช้ในกิจกรรมอบรม กสม. ปี 2568",
+  "source": "WoL internal (it-s-all-right.json, evidence note)",
+  "kabir": {
+    "K": { "score": 1, "note": "Stated: systems thinking + ความเชื่อมโยงสิ่งแวดล้อม-สิทธิ์" },
+    "A": { "score": 1, "note": "ยังไม่มีข้อมูล" },
+    "B": { "score": 1, "note": "ยังไม่มีข้อมูล" },
+    "I": { "score": 1, "note": "กสม. = client ปัจจุบัน (NHRC) — strategic domain alignment" },
+    "R": { "score": 1, "note": "Training กสม. — ไม่ทราบจำนวน" }
+  },
+  "sources": [
+    {
+      "title": "WoL Internal Report (2568)",
+      "type": "anecdote",
+      "e_score": 1,
+      "note": "ขอ internal report จาก กสม. เพื่อ upgrade เป็น E2"
+    }
+  ],
+  "gaps": [
+    "Internal report จาก กสม. (เพื่อ upgrade เป็น E2)",
+    "จำนวนผู้เล่น / กิจกรรม",
+    "รายละเอียด game design ที่ public ได้"
+  ]
+}

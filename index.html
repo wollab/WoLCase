@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WoLCase — Impact Portfolio</title>
+  <meta name="description" content="หลักฐานผลลัพธ์จาก game-based learning ของ Wizards of Learning — ข้อมูลจริง วัดผลได้ ใช้ได้ใน proposal">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div>
+      <span class="brand-kicker">Wizards of Learning</span>
+      <strong>WoLCase</strong>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="#gallery">Impact Gallery</a>
+    <a href="https://wizardsoflearning.com" target="_blank" rel="noopener">wizardsoflearning.com</a>
+  </nav>
+  <a href="mailto:contact@wizardsoflearning.com" class="btn btn-primary" style="font-size:0.9rem;padding:0.55rem 1.1rem">ติดต่อ WoL</a>
+</header>
+
+<main>
+  <section class="section hero">
+    <div class="hero-eyebrow">Impact Portfolio</div>
+    <h1>เกมที่<br>วัดผลได้</h1>
+    <p class="hero-lead">
+      Wizards of Learning ออกแบบบอร์ดเกมเพื่อการเรียนรู้ที่มีหลักฐานรองรับ —
+      ตั้งแต่ testimonial จนถึงงานวิจัยที่ตีพิมพ์ในระดับ TCI-Thaijo
+    </p>
+    <div class="hero-stats" id="hero-stats">
+      <!-- filled by JS -->
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-chip active" data-filter="all">ทั้งหมด</button>
+      <div class="filter-sep"></div>
+      <button class="filter-chip" data-filter="domain:finance">การเงิน</button>
+      <button class="filter-chip" data-filter="domain:civic">Civic</button>
+      <button class="filter-chip" data-filter="domain:human-rights">สิทธิมนุษยชน</button>
+      <button class="filter-chip" data-filter="domain:environment">สิ่งแวดล้อม</button>
+      <button class="filter-chip" data-filter="domain:law">กฎหมาย</button>
+      <div class="filter-sep"></div>
+      <button class="filter-chip" data-filter="e:4">E4 ตีพิมพ์</button>
+      <button class="filter-chip" data-filter="e:3">E3 แบบสอบถาม</button>
+      <button class="filter-chip" data-filter="e:2">E2 Observed</button>
+    </div>
+
+    <div class="game-grid" id="game-grid">
+      <p style="color:var(--ink-soft);grid-column:1/-1;padding:2rem 0">กำลังโหลดข้อมูล…</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Wizards of Learning — <a href="https://wizardsoflearning.com" target="_blank">wizardsoflearning.com</a></span>
+    <span style="font-size:0.82rem;color:var(--ink-soft)">ข้อมูลอัปเดต มิถุนายน 2569</span>
+  </div>
+</footer>
+
+<script>
+const GAMES = [
+  'wishlist','local-election','justice-game','richman-game',
+  'blue-carbon','make-it-right','its-all-right','water-journey'
+];
+
+const DOMAIN_COLORS = {
+  finance:    { bg:'var(--mint)', label:'การเงิน', cls:'tag-mint' },
+  civic:      { bg:'var(--navy)', label:'Civic', cls:'tag-navy' },
+  'human-rights': { bg:'var(--coral)', label:'สิทธิมนุษยชน', cls:'tag-coral' },
+  environment: { bg:'var(--lime)', label:'สิ่งแวดล้อม', cls:'tag-lime' },
+  law:        { bg:'var(--sun)', label:'กฎหมาย', cls:'tag-sun' },
+};
+
+const E_CLASS = { 4:'e4', 3:'e3', 2:'e2', 1:'e1' };
+const E_LABELS = { 4:'E4', 3:'E3', 2:'E2', 1:'E1' };
+
+let allGames = [];
+
+function eClass(s){ return E_CLASS[s] || 'e1'; }
+
+function cardHTML(g){
+  const domTags = (g.domain||[]).map(d=>{
+    const dc = DOMAIN_COLORS[d] || {label:d, cls:'tag-navy'};
+    return `<span class="tag ${dc.cls}">${dc.label}</span>`;
+  }).join('');
+
+  const accentColor = g.domain && DOMAIN_COLORS[g.domain[0]]
+    ? (g.domain[0]==='finance'?'var(--mint)':g.domain[0]==='civic'?'var(--navy)':g.domain[0]==='human-rights'?'var(--coral)':g.domain[0]==='environment'?'var(--lime)':'var(--sun)')
+    : 'var(--mint)';
+
+  return `
+  <a class="game-card" href="game.html?slug=${g.slug}"
+     data-domains="${(g.domain||[]).join(',')}"
+     data-escore="${g.e_score}">
+    <div class="game-card-accent" style="background:${accentColor}"></div>
+    <div class="game-card-tags">
+      ${domTags}
+      <span class="tag tag-navy" style="margin-left:auto;font-size:0.75rem">${g.year}</span>
+    </div>
+    <h3>${g.name}</h3>
+    <p style="font-size:0.9rem;color:var(--ink-soft);line-height:1.5;margin-top:0.1rem">
+      ${g.name_th !== g.name ? g.name_th+'<br>' : ''}
+      <span style="font-size:0.84rem">${g.client}</span>
+    </p>
+    <div class="game-card-stat">
+      <span class="e-badge ${eClass(g.e_score)}">
+        <span class="e-dot"></span>
+        ${g.e_label || E_LABELS[g.e_score]}
+      </span>
+      <span class="game-card-key">${g.key_stat ? g.key_stat : g.r_label}</span>
+    </div>
+  </a>`;
+}
+
+async function loadGames(){
+  const results = await Promise.all(
+    GAMES.map(slug =>
+      fetch(`data/${slug}.json`)
+        .then(r => r.json())
+        .catch(() => null)
+    )
+  );
+  allGames = results.filter(Boolean);
+
+  // hero stats
+  const total = allGames.length;
+  const e3plus = allGames.filter(g=>g.e_score>=3).length;
+  const domains = new Set(allGames.flatMap(g=>g.domain||[])).size;
+  document.getElementById('hero-stats').innerHTML = `
+    <span class="hero-stat"><strong>${total}</strong> เกม flagship</span>
+    <span class="hero-stat"><strong>${e3plus}</strong> เกมที่มีข้อมูล E3+ (แบบสอบถาม/ตีพิมพ์)</span>
+    <span class="hero-stat"><strong>${domains}</strong> ประเด็นการเรียนรู้</span>
+    <span class="hero-stat"><strong>2019–2025</strong> ปีที่ผลิต</span>
+  `;
+
+  renderGrid(allGames);
+}
+
+function renderGrid(games){
+  const grid = document.getElementById('game-grid');
+  if(!games.length){
+    grid.innerHTML = '<div class="empty-state"><p>ไม่พบเกมในหมวดนี้</p></div>';
+    return;
+  }
+  grid.innerHTML = games.map(cardHTML).join('');
+}
+
+// Filter
+document.getElementById('filter-bar').addEventListener('click', e=>{
+  const chip = e.target.closest('.filter-chip');
+  if(!chip) return;
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  const f = chip.dataset.filter;
+  if(f==='all'){ renderGrid(allGames); return; }
+  if(f.startsWith('domain:')){
+    const d = f.slice(7);
+    renderGrid(allGames.filter(g=>(g.domain||[]).includes(d)));
+  } else if(f.startsWith('e:')){
+    const score = parseInt(f.slice(2));
+    renderGrid(allGames.filter(g=>g.e_score>=score));
+  }
+});
+
+loadGames();
+</script>
+</body>
+</html>
