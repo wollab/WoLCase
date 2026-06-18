@@ -152,20 +152,10 @@
     </div>
 
     <div class="sub-form-wrap" id="form-wrap">
-      <!-- Replace TALLY_FORM_ID with actual Tally form ID -->
-      <div class="tally-placeholder" id="tally-placeholder">
-        <div class="pl-icon">📬</div>
-        <p>แบบฟอร์มส่งหลักฐานกำลังจะเปิดให้บริการเร็วๆ นี้<br>
-        หากต้องการส่งหลักฐานด่วน ติดต่อได้ที่
-        <a href="mailto:contact@wizardsoflearning.com" style="color:var(--navy)">contact@wizardsoflearning.com</a></p>
-      </div>
-      <!-- When Tally form is ready, uncomment and replace TALLY_FORM_ID:
-      <iframe class="tally-frame"
-        src="https://tally.so/embed/TALLY_FORM_ID?hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        onload="this.previousElementSibling.style.display='none'"
+      <iframe class="tally-frame" id="tally-iframe"
+        src="https://tally.so/embed/xX6kEr?hideTitle=1&transparentBackground=1&dynamicHeight=1"
         title="ส่งหลักฐาน WoLCase">
       </iframe>
-      -->
     </div>
 
     <div class="sub-after">
@@ -189,17 +179,18 @@
 const params = new URLSearchParams(window.location.search);
 const gameSlug = params.get('game');
 const gameName = params.get('name');
-if (gameSlug && gameName) {
+if (gameSlug) {
+  // Show game banner
   const banner = document.getElementById('game-banner');
-  document.getElementById('game-banner-name').textContent = decodeURIComponent(gameName);
+  if (gameName) document.getElementById('game-banner-name').textContent = decodeURIComponent(gameName);
   document.getElementById('game-banner-back').href = `game.html?slug=${gameSlug}`;
   banner.style.display = 'flex';
-  // Update email placeholder to pre-fill game name
-  const ph = document.getElementById('tally-placeholder');
-  if (ph) {
-    const link = ph.querySelector('a');
-    if (link) link.href = `mailto:contact@wizardsoflearning.com?subject=หลักฐาน: ${decodeURIComponent(gameName)}`;
-  }
+
+  // Pass game slug to Tally via hidden field URL param
+  const iframe = document.getElementById('tally-iframe');
+  const base = 'https://tally.so/embed/xX6kEr?hideTitle=1&transparentBackground=1&dynamicHeight=1';
+  iframe.src = base + '&game=' + encodeURIComponent(gameSlug)
+    + (gameName ? '&game_name=' + encodeURIComponent(decodeURIComponent(gameName)) : '');
 }
 </script>
 </body>
