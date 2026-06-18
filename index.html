@@ -18,6 +18,7 @@
   </div>
   <nav class="site-nav">
     <a href="#gallery">Impact Gallery</a>
+    <a href="submit.html">ส่งหลักฐาน</a>
     <a href="https://wizardsoflearning.com" target="_blank" rel="noopener">wizardsoflearning.com</a>
   </nav>
   <a href="mailto:contact@wizardsoflearning.com" class="btn btn-primary" style="font-size:0.9rem;padding:0.55rem 1.1rem">ติดต่อ WoL</a>
@@ -95,26 +96,32 @@ function cardHTML(g){
     ? (g.domain[0]==='finance'?'var(--mint)':g.domain[0]==='civic'?'var(--navy)':g.domain[0]==='human-rights'?'var(--coral)':g.domain[0]==='environment'?'var(--lime)':'var(--sun)')
     : 'var(--mint)';
 
+  const imgHTML = g.image_drive_id
+    ? `<div class="game-card-img"><img src="https://drive.google.com/thumbnail?id=${g.image_drive_id}&sz=w400" alt="${g.name}" loading="lazy"></div>`
+    : `<div class="game-card-img game-card-img-placeholder" style="background:${accentColor}20"><span>${g.name_th||g.name}</span></div>`;
+
   return `
   <a class="game-card" href="game.html?slug=${g.slug}"
      data-domains="${(g.domain||[]).join(',')}"
      data-escore="${g.e_score}">
-    <div class="game-card-accent" style="background:${accentColor}"></div>
-    <div class="game-card-tags">
-      ${domTags}
-      <span class="tag tag-navy" style="margin-left:auto;font-size:0.75rem">${g.year}</span>
-    </div>
-    <h3>${g.name}</h3>
-    <p style="font-size:0.9rem;color:var(--ink-soft);line-height:1.5;margin-top:0.1rem">
-      ${g.name_th !== g.name ? g.name_th+'<br>' : ''}
-      <span style="font-size:0.84rem">${g.client}</span>
-    </p>
-    <div class="game-card-stat">
-      <span class="e-badge ${eClass(g.e_score)}">
-        <span class="e-dot"></span>
-        ${g.e_label || E_LABELS[g.e_score]}
-      </span>
-      <span class="game-card-key">${g.key_stat ? g.key_stat : g.r_label}</span>
+    ${imgHTML}
+    <div class="game-card-body">
+      <div class="game-card-tags">
+        ${domTags}
+        <span class="tag tag-navy" style="margin-left:auto;font-size:0.75rem">${g.year}</span>
+      </div>
+      <h3>${g.name}</h3>
+      <p style="font-size:0.9rem;color:var(--ink-soft);line-height:1.5;margin-top:0.1rem">
+        ${g.name_th !== g.name ? g.name_th+'<br>' : ''}
+        <span style="font-size:0.84rem">${g.client}</span>
+      </p>
+      <div class="game-card-stat">
+        <span class="e-badge ${eClass(g.e_score)}">
+          <span class="e-dot"></span>
+          ${g.e_label || E_LABELS[g.e_score]}
+        </span>
+        <span class="game-card-key">${g.key_stat ? g.key_stat : g.r_label}</span>
+      </div>
     </div>
   </a>`;
 }

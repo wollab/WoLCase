@@ -6,6 +6,11 @@
   <title>WoLCase — Game Detail</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    .gd-img {
+      width:100%;max-height:360px;overflow:hidden;border-radius:var(--radius-xl);
+      margin-bottom:2rem;background:#e8edf5;
+    }
+    .gd-img img { width:100%;height:100%;object-fit:cover;display:block;max-height:360px; }
     .gd-hero {
       padding: 3rem 0 2rem;
       border-bottom: 1px solid var(--line);
@@ -302,7 +307,12 @@ function buildPage(g){
     ${g.gaps.map(gap=>`
       <div class="gaprow"><span class="gapdot">○</span><span>${gap}</span></div>`).join('')}`:'';
 
+  const heroImg = g.image_drive_id
+    ? `<div class="gd-img"><img src="https://drive.google.com/thumbnail?id=${g.image_drive_id}&sz=w800" alt="${g.name}"></div>`
+    : '';
+
   return `
+    ${heroImg}
     <div class="gd-hero">
       <div class="gd-eyebrow">${domTags}<span class="tag tag-navy">${g.year}</span></div>
       <h1 class="gd-title">${g.name}</h1>

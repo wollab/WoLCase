@@ -116,11 +116,25 @@ p{line-height:1.7}
   background:rgba(255,255,255,0.82);
   border:1px solid rgba(255,255,255,0.75);
   box-shadow:var(--shadow);
-  padding:1.5rem;
-  display:flex;flex-direction:column;gap:0.75rem;
+  display:flex;flex-direction:column;
   transition:transform 200ms ease,box-shadow 200ms ease;
   cursor:pointer;text-decoration:none;color:var(--ink);
   position:relative;overflow:hidden;
+}
+.game-card-img{
+  width:100%;height:180px;overflow:hidden;border-radius:var(--radius-xl) var(--radius-xl) 0 0;
+  background:#e8edf5;flex:0 0 180px;
+}
+.game-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 300ms ease}
+.game-card:hover .game-card-img img{transform:scale(1.04)}
+.game-card-img-placeholder{
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.85rem;font-weight:600;color:var(--ink-soft);
+  text-align:center;padding:1rem;
+}
+.game-card-body{
+  padding:1.25rem 1.5rem 1.5rem;
+  display:flex;flex-direction:column;gap:0.6rem;flex:1;
 }
 .game-card:hover{transform:translateY(-4px);box-shadow:0 32px 72px rgba(21,45,98,0.18)}
 .game-card-accent{

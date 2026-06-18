@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ส่งหลักฐาน — WoLCase</title>
+  <meta name="description" content="ส่งหลักฐานการนำเกม Wizards of Learning ไปใช้ เพื่อเพิ่มความน่าเชื่อถือให้กับฐานข้อมูล Impact">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .sub-hero {
+      padding: 3.5rem 0 2.5rem;
+      max-width: 640px;
+    }
+    .sub-eyebrow {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--mint-deep);
+      margin-bottom: 0.75rem;
+    }
+    .sub-hero h1 { font-size: clamp(2rem,5vw,3.2rem); line-height: 1.05; margin-bottom: 1rem; }
+    .sub-lead { font-size: 1.1rem; color: var(--ink-soft); line-height: 1.75; margin-bottom: 2rem; }
+
+    .sub-what {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-bottom: 3rem;
+    }
+    .sub-what-card {
+      background: rgba(255,255,255,0.82); border: 1px solid rgba(255,255,255,0.75);
+      border-radius: var(--radius-lg); padding: 1.25rem 1.4rem;
+      box-shadow: 0 8px 24px rgba(21,45,98,0.07);
+    }
+    .sub-what-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .sub-what-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .sub-what-card p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+
+    .sub-e-note {
+      background: rgba(54,189,188,0.1); border-left: 4px solid var(--mint-deep);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1rem 1.25rem; margin-bottom: 2.5rem;
+      font-size: 0.92rem; color: var(--ink); line-height: 1.7;
+    }
+    .sub-e-note strong { color: var(--navy); }
+
+    .sub-form-wrap {
+      background: rgba(255,255,255,0.88); border: 1px solid rgba(255,255,255,0.75);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow);
+      overflow: hidden; min-height: 600px;
+    }
+    .tally-frame {
+      width: 100%; min-height: 700px; border: none; display: block;
+    }
+
+    /* Placeholder shown until Tally URL is set */
+    .tally-placeholder {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 400px; padding: 3rem 2rem; text-align: center; color: var(--ink-soft);
+      gap: 1rem;
+    }
+    .tally-placeholder .pl-icon { font-size: 3rem; opacity: 0.4; }
+    .tally-placeholder p { font-size: 0.95rem; line-height: 1.7; max-width: 400px; }
+    .tally-placeholder .pl-steps {
+      text-align: left; background: rgba(16,32,57,0.04);
+      border-radius: var(--radius-md); padding: 1.25rem 1.5rem;
+      font-size: 0.88rem; line-height: 2; max-width: 440px; width: 100%;
+    }
+    .tally-placeholder .pl-steps ol { margin: 0; padding-left: 1.25rem; }
+
+    .sub-after {
+      margin-top: 2.5rem; padding: 1.5rem 1.75rem;
+      background: rgba(255,255,255,0.7); border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+    }
+    .sub-after h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
+    .sub-after p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div>
+      <span class="brand-kicker">Wizards of Learning</span>
+      <strong>WoLCase</strong>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Impact Gallery</a>
+    <a href="submit.html" style="color:var(--navy);font-weight:700">ส่งหลักฐาน</a>
+    <a href="https://wizardsoflearning.com" target="_blank" rel="noopener">wizardsoflearning.com</a>
+  </nav>
+  <a href="index.html" class="btn btn-primary" style="font-size:0.9rem;padding:0.55rem 1.1rem">ดู Impact Gallery</a>
+</header>
+
+<main>
+  <section class="section">
+    <div class="sub-hero">
+      <div class="sub-eyebrow">Community Evidence</div>
+      <h1>ส่งหลักฐานการนำไปใช้</h1>
+      <p class="sub-lead">
+        ถ้าคุณเคยนำเกมของ WoL ไปใช้กับกลุ่มเป้าหมาย — ส่งหลักฐานมาได้เลย
+        ทั้งภาพถ่าย ผลสำรวจ หรือรายงาน จะช่วยยืนยันผลลัพธ์และยกระดับ E-score ของเกม
+      </p>
+    </div>
+
+    <div class="sub-what">
+      <div class="sub-what-card">
+        <div class="sub-what-icon">📷</div>
+        <h3>ภาพถ่าย / วิดีโอ</h3>
+        <p>ภาพ session การเล่น, การอบรม, หรืองาน event</p>
+      </div>
+      <div class="sub-what-card">
+        <div class="sub-what-icon">📋</div>
+        <h3>ผลแบบสอบถาม</h3>
+        <p>Pre/Post survey, ข้อมูล N ผู้เล่น, สรุปผลตัวเลข</p>
+      </div>
+      <div class="sub-what-card">
+        <div class="sub-what-icon">📄</div>
+        <h3>รายงาน / บทความ</h3>
+        <p>รายงานโครงการ, บทความวิจัย, หรือ press release</p>
+      </div>
+      <div class="sub-what-card">
+        <div class="sub-what-icon">💬</div>
+        <h3>Testimonial</h3>
+        <p>คำพูดจากผู้เข้าร่วม, ผู้จัดกิจกรรม, หรือ facilitator</p>
+      </div>
+    </div>
+
+    <div class="sub-e-note">
+      <strong>หลักฐานที่ส่งมาจะถูกตรวจสอบโดยทีม WoL ก่อนเผยแพร่</strong>
+      หลักฐานที่ผ่านการตรวจสอบจะเพิ่มเข้า Impact Gallery และอาจช่วยยกระดับ
+      E-score ของเกมนั้น เช่น จาก E2 → E3 เมื่อมีแบบสอบถาม N≥30
+    </div>
+
+    <div class="sub-form-wrap" id="form-wrap">
+      <!-- Replace TALLY_FORM_ID with actual Tally form ID -->
+      <div class="tally-placeholder" id="tally-placeholder">
+        <div class="pl-icon">📬</div>
+        <p>แบบฟอร์มส่งหลักฐานกำลังจะเปิดให้บริการเร็วๆ นี้<br>
+        หากต้องการส่งหลักฐานด่วน ติดต่อได้ที่
+        <a href="mailto:contact@wizardsoflearning.com" style="color:var(--navy)">contact@wizardsoflearning.com</a></p>
+      </div>
+      <!-- When Tally form is ready, uncomment and replace TALLY_FORM_ID:
+      <iframe class="tally-frame"
+        src="https://tally.so/embed/TALLY_FORM_ID?hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        onload="this.previousElementSibling.style.display='none'"
+        title="ส่งหลักฐาน WoLCase">
+      </iframe>
+      -->
+    </div>
+
+    <div class="sub-after">
+      <h3>หลังจากส่งแล้ว ทีม WoL จะทำอะไร?</h3>
+      <p>
+        ทีมจะรีวิวหลักฐานภายใน 5–7 วันทำการ ถ้าผ่าน จะแสดงใน Impact Gallery พร้อมระบุแหล่งที่มา
+        ถ้าต้องการข้อมูลเพิ่มเติม จะติดต่อกลับทาง email ที่ระบุไว้ในแบบฟอร์ม
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Wizards of Learning — <a href="https://wizardsoflearning.com" target="_blank">wizardsoflearning.com</a></span>
+    <span style="font-size:0.82rem;color:var(--ink-soft)">ข้อมูลอัปเดต มิถุนายน 2569</span>
+  </div>
+</footer>
+
+</body>
+</html>
