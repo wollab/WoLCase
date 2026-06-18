@@ -7,10 +7,16 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     .gd-img {
-      width:100%;max-height:360px;overflow:hidden;border-radius:var(--radius-xl);
-      margin-bottom:2rem;background:#e8edf5;
+      width:100%;border-radius:var(--radius-xl);
+      margin-bottom:2rem;background:#f0f3f8;
+      display:flex;align-items:center;justify-content:center;
+      padding:2rem;min-height:200px;
     }
-    .gd-img img { width:100%;height:100%;object-fit:cover;display:block;max-height:360px; }
+    .gd-img img {
+      max-width:320px;max-height:320px;width:auto;height:auto;
+      object-fit:contain;display:block;
+      filter:drop-shadow(0 8px 28px rgba(16,32,57,0.22));
+    }
     .gd-hero {
       padding: 3rem 0 2rem;
       border-bottom: 1px solid var(--line);
@@ -145,6 +151,18 @@
     .cta-inner p { font-size:0.98rem;line-height:1.75;font-style:italic;margin-bottom:0.35rem; }
     .cta-inner small { font-size:0.81rem;color:var(--ink-soft);font-style:normal; }
     .cta-actions { display:flex;gap:0.75rem;flex-wrap:wrap; }
+
+    /* Submit evidence CTA */
+    .submit-evidence-cta {
+      display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;
+      background:rgba(120,221,215,0.12);border:1.5px solid rgba(54,189,188,0.3);
+      border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:2.5rem;
+    }
+    .sec-icon { font-size:2rem;flex:0 0 auto; }
+    .submit-evidence-cta div { flex:1;min-width:200px; }
+    .submit-evidence-cta div strong { display:block;font-size:1rem;margin-bottom:0.25rem; }
+    .submit-evidence-cta div p { font-size:0.88rem;color:var(--ink-soft);line-height:1.6;margin:0; }
+    .sec-btn { white-space:nowrap;flex:0 0 auto; }
 
     /* Sources */
     .sw { margin-bottom:4rem; }
@@ -358,9 +376,19 @@ function buildPage(g){
       </div>
       <div class="cta-actions">
         <a href="mailto:contact@wizardsoflearning.com?subject=สนใจ ${g.name}" class="btn btn-primary">ใช้ใน Proposal</a>
+        <a href="submit.html?game=${g.slug}&name=${encodeURIComponent(g.name)}" class="btn btn-secondary">ส่งหลักฐานการใช้เกมนี้</a>
         <a href="index.html" class="btn btn-secondary">← ดูเกมอื่น</a>
       </div>
     </div>`:''}
+
+    <div class="submit-evidence-cta">
+      <div class="sec-icon">📬</div>
+      <div>
+        <strong>เคยใช้เกมนี้กับกลุ่มเป้าหมาย?</strong>
+        <p>ส่งภาพถ่าย ผลสำรวจ หรือรายงานมาได้เลย — หลักฐานของคุณจะช่วยยืนยันผลลัพธ์และยกระดับ E-score ของเกม</p>
+      </div>
+      <a href="submit.html?game=${g.slug}&name=${encodeURIComponent(g.name)}" class="btn btn-primary sec-btn">ส่งหลักฐาน →</a>
+    </div>
 
     <div class="sw">
       <h2>แหล่งข้อมูล</h2>

@@ -71,6 +71,18 @@
     }
     .sub-after h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
     .sub-after p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
+
+    .game-banner {
+      display: flex; align-items: center; gap: 1rem;
+      background: rgba(31,63,143,0.07); border: 1.5px solid rgba(31,63,143,0.15);
+      border-radius: var(--radius-lg); padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .game-banner-icon { font-size: 1.5rem; flex: 0 0 auto; }
+    .game-banner-text { flex: 1; }
+    .game-banner-text strong { display: block; font-size: 0.95rem; color: var(--navy); }
+    .game-banner-text span { font-size: 0.85rem; color: var(--ink-soft); }
+    .game-banner a { font-size: 0.82rem; color: var(--ink-soft); white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -99,6 +111,15 @@
         ถ้าคุณเคยนำเกมของ WoL ไปใช้กับกลุ่มเป้าหมาย — ส่งหลักฐานมาได้เลย
         ทั้งภาพถ่าย ผลสำรวจ หรือรายงาน จะช่วยยืนยันผลลัพธ์และยกระดับ E-score ของเกม
       </p>
+    </div>
+
+    <div class="game-banner" id="game-banner" style="display:none">
+      <div class="game-banner-icon">🎲</div>
+      <div class="game-banner-text">
+        <strong id="game-banner-name"></strong>
+        <span>เกมที่คุณกำลังส่งหลักฐานให้</span>
+      </div>
+      <a id="game-banner-back" href="index.html">← กลับหน้าเกม</a>
     </div>
 
     <div class="sub-what">
@@ -164,5 +185,22 @@
   </div>
 </footer>
 
+<script>
+const params = new URLSearchParams(window.location.search);
+const gameSlug = params.get('game');
+const gameName = params.get('name');
+if (gameSlug && gameName) {
+  const banner = document.getElementById('game-banner');
+  document.getElementById('game-banner-name').textContent = decodeURIComponent(gameName);
+  document.getElementById('game-banner-back').href = `game.html?slug=${gameSlug}`;
+  banner.style.display = 'flex';
+  // Update email placeholder to pre-fill game name
+  const ph = document.getElementById('tally-placeholder');
+  if (ph) {
+    const link = ph.querySelector('a');
+    if (link) link.href = `mailto:contact@wizardsoflearning.com?subject=หลักฐาน: ${decodeURIComponent(gameName)}`;
+  }
+}
+</script>
 </body>
 </html>
